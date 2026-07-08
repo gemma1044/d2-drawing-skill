@@ -37,7 +37,14 @@ elseif (Test-Path "D:\tools\d2\d2.exe") { & "D:\tools\d2\d2.exe" --version }
 else { d2 --version }
 ```
 
-If D2 is missing, ask the user to install D2 or provide the `D2_BIN` path.
+If D2 is missing, tell the user to install it before rendering:
+
+1. Open [D2 releases](https://github.com/terrastruct/d2/releases).
+2. On Windows, download the latest `d2-*-windows-amd64.msi`.
+3. Run the installer; it should add `d2` to PATH.
+4. Reopen PowerShell and run `d2 --version`.
+
+If the user does not want to use PATH, ask them to provide the full executable path via `D2_BIN`.
 
 ## Default Deliverables
 

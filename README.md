@@ -35,7 +35,20 @@ Or copy `SKILL.md` and `scripts/` into an existing skill folder.
 
 ## Requirements
 
-Install D2 locally:
+Install D2 locally first.
+
+Recommended on Windows:
+
+1. Open [D2 releases](https://github.com/terrastruct/d2/releases).
+2. Download the latest `d2-*-windows-amd64.msi`.
+3. Run the installer. The official installer adds `d2` to PATH.
+4. Open a new PowerShell window and verify:
+
+```powershell
+d2 --version
+```
+
+Alternative executable resolution:
 
 - Put `d2.exe` at `D:\tools\d2\d2.exe`, or
 - Add `d2` to `PATH`, or
@@ -44,7 +57,9 @@ Install D2 locally:
 Check:
 
 ```powershell
-D:\tools\d2\d2.exe --version
+if ($env:D2_BIN) { & $env:D2_BIN --version }
+elseif (Test-Path "D:\tools\d2\d2.exe") { & "D:\tools\d2\d2.exe" --version }
+else { d2 --version }
 ```
 
 For SVG -> PNG conversion, install PyMuPDF:
