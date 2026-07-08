@@ -1,0 +1,23 @@
+direction: down
+
+user: "User"
+web: "Web App"
+api: "API Service"
+worker: "Worker"
+db: "PostgreSQL" {
+  shape: cylinder
+}
+redis: "Redis" {
+  shape: cylinder
+}
+storage: "Object Storage" {
+  shape: cylinder
+}
+
+user -> web: "uses"
+web -> api: "HTTPS"
+api -> db: "read/write"
+api -> redis: "queue"
+redis -> worker: "job"
+worker -> storage: "write assets"
+worker -> db: "update status"
